@@ -54,19 +54,19 @@
             <div class="contact">
                 <el-form label-width="60px">
                     <el-form-item label="姓名">
-                        <el-input></el-input>
+                        <el-input v-model="contactName"></el-input>
                     </el-form-item>
 
                     <el-form-item label="手机">
-                        <el-input placeholder="请输入内容">
+                        <el-input placeholder="请输入内容" v-model="contactPhone">
                             <template slot="append">
-                            <el-button @click="handleSendCaptcha">发送验证码</el-button>
+                            <el-button @click="handleSendCaptcha" >发送验证码</el-button>
                             </template>
                         </el-input>
                     </el-form-item>
 
                     <el-form-item label="验证码">
-                        <el-input></el-input>
+                        <el-input v-model="captcha"></el-input>
                     </el-form-item>
                 </el-form>   
                 <el-button type="warning" class="submit" @click="handleSubmit">提交订单</el-button>
@@ -83,13 +83,13 @@ export default {
                 username:"",
                 id:""
              }],
-             insurances:[],
+             insurances:[], // 保险id
              contactName:"",
              contactPhone:"",
              captcha:"",
              invoice:false,
-             seat_xid:"",
-             air:"" 
+             seat_xid:"",// 座位的id
+             air:"" // 航班的id
         }
     },
      props: {
@@ -130,7 +130,16 @@ export default {
         
         // 发送手机验证码
         handleSendCaptcha(){
+            if (!this.contactPhone) {
+                this.$message.error('手机号码不能为空')
+                return
+            }
+               // 调用actions的发送手机验证码的接口
+               this.$store.dispatch('user/sendCaptcha', this.contactPhone).then(res=>{
+            console.log(res);
+            this.$message.success("手机验证码发送成功：000000")
             
+        })
         },
 
         // 提交订单

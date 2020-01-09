@@ -59,7 +59,14 @@ export const actions = {
 
             return true;
         })
-    }
+    },
+    // // 发送手机验证码 的方法
+    // sendCaptcha(store,data){
+    //     return this.$axios({
+    //         url:'/captchas',
+    //         data:'tel' //不能这样写
+    //     })
+    // }
 };
 
 
