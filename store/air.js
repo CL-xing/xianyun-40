@@ -10,7 +10,7 @@ export const mutations = {
     
     },
    // 存储总价格
-    allPrice(state,data){
+    allPrice(state,data){ 
     state.allPrice = data
     }
 }

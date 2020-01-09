@@ -1,6 +1,7 @@
 <template>
     <div class="container">
         <div class="main">
+            <div class="pay-title">
                 支付总金额 <span class="pay-price">￥ 1000</span>
             </div>
             <div class="pay-main">
