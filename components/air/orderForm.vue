@@ -153,7 +153,7 @@ export default {
              captcha:this.captcha,
              invoice:false,
              seat_xid:this.$route.query.seat_xid,// 座位的id
-             air:this.$route.query.air // 航班的id
+             air:this.$route.query.id // 航班的id
             }
              // 创建订单接口
             this.$axios({

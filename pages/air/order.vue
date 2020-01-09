@@ -5,24 +5,28 @@
               <OrderForm :data= "infoData" />
 
             <!-- 侧边栏 -->
-            <div class="aside">
-                          
-            </div>
+                <OrderAside :data= "infoData" />
         </el-row>
     </div>
 </template>
 
 <script>
 import OrderForm from "@/components/air/orderForm.vue";
+import OrderAside from "@/components/air/orderAside.vue";
+
 export default {
    data(){
         return {
             // 当前选中的机票的信息
-            infoData: {}
+            infoData: {
+                 insurances: [], // 初始化保险数据
+                seat_infos: {}
+            }
         }
     },
     components: {
-        OrderForm
+        OrderForm,
+        OrderAside
     },
     mounted(){
         // id是动态参数
