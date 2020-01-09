@@ -180,6 +180,14 @@ export default {
                 data
             }).then(res=>{
                 console.log(res);
+                const {id} = res.data.data//解构得到id
+                this.$router.push({
+                    path:'/air/pay',
+                    query:{
+                        id
+                    }
+                })
+
                 
             })
         }
