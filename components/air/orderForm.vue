@@ -72,6 +72,7 @@
                 <el-button type="warning" class="submit" @click="handleSubmit">提交订单</el-button>
             </div>
         </div>
+        <span>{{allPrice}}</span>
     </div>
 </template>
 
@@ -99,10 +100,23 @@ export default {
             default(){return {}}
         }
     },
-   mounted () {
-       console.log(1111);
-       
-   },
+    computed: {
+        // 计算总价格。总价格展示在侧边栏的组件
+        allPrice(){
+            let price =0;
+            // 机票的单价
+            price += this.data.seat_infos.org_settle_price;
+            // 机建+燃油
+            price += this.data.airport_tax_audlet;
+            // 保险
+            price += this.insurances.length*30;
+            // 根据乘车人增加的机票价
+            price *= this.users.length 
+             // 传递给store
+             this.$store.commit('air/allPrice', price)
+            return ''
+        }
+    },
     methods: {
         // 添加乘机人
         handleAddUsers(){
