@@ -50,7 +50,8 @@ export const actions = {
         return this.$axios({
             url: "/accounts/register",
             method: 'POST',
-            data
+            
+            
         }).then(res => {
             // 登录成功后返回上一个页面
             this.$router.back();
